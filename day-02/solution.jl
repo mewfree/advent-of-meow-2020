@@ -22,6 +22,23 @@ function is_valid(pw)
     end
 end
 
-# how many are valid?
+# how many are valid? part 1
 result = count(pw->(pw |> is_valid), passwords)
+println("Part 1:")
+println(result)
+
+function is_valid2(pw)
+    pos_1 = pw["range"] |> first
+    pos_2 = pw["range"] |> last
+
+    if (pw["text"][pos_1] == pw["letter"]) ⊻ (pw["text"][pos_2] == pw["letter"])
+        return true
+    else
+        return false
+    end
+end
+
+# how many are valid? part 2
+result = count(pw->(pw |> is_valid2), passwords)
+println("Part 2:")
 println(result)
