@@ -5,7 +5,7 @@ function parse_input(pw)
     range_split = split(pw_split[1], "-") |> lst->(map(s->parse(Int, s), lst))
 
     return Dict(
-         "range" => range(range_split[1], range_split[2], step=1),
+         "range" => range_split[1]:range_split[2],
          "letter" => pw_split[2] |> first,
          "text" => pw_split[3]
     )

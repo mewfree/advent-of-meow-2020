@@ -29,11 +29,11 @@ function passport_valid(passport)
     else
         height, unit = match(r"([0-9]*)(cm|in)", passport["hgt"]).captures
         if unit == "cm"
-            if parse(Int, height) ∉ range(150, 193, step=1)
+            if parse(Int, height) ∉ 150:193
                 return false
             end
         elseif unit == "in"
-            if parse(Int, height) ∉ range(59, 76, step=1)
+            if parse(Int, height) ∉ 59:76
                 return false
             end
         else
@@ -49,9 +49,9 @@ function passport_valid(passport)
         return false
     end
 
-    if (byr ∈ range(1920, 2002, step=1)
-    && iyr ∈ range(2010, 2020, step=1)
-    && eyr ∈ range(2020, 2030, step=1)
+    if (byr ∈ 1920:2002
+    && iyr ∈ 2010:2020
+    && eyr ∈ 2020:2030
     && hcl_match.match == passport["hcl"]
     && passport["ecl"] ∈ ["amb", "blu", "brn", "gry", "grn", "hzl", "oth"]
     && pid_match.match == passport["pid"])
