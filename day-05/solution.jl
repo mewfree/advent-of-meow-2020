@@ -25,4 +25,13 @@ function calculate_seat_id(line)
 end
 
 seat_ids = map(l->calculate_seat_id(l), input)
+
+println("Part 1:")
 println(maximum(seat_ids))
+
+println("Part 2:")
+for seat_id in minimum(seat_ids):maximum(seat_ids)
+    if seat_id ∉ seat_ids && seat_id+1 ∈ seat_ids && seat_id-1 ∈ seat_ids
+        println(seat_id)
+    end
+end
